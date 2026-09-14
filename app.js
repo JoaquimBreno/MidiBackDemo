@@ -39,19 +39,20 @@ const MIDIBackDemo = (() => {
     const root = document.getElementById("songs");
     try {
       const catalog = await loadCatalog();
-      status.textContent = `${catalog.songs.length} songs · ${catalog.library}`;
+      status.textContent = `${catalog.songs.length} songs · ${catalog.sources || catalog.library}`;
       root.innerHTML = "";
       for (const song of catalog.songs) {
         const card = document.createElement("article");
         card.className = "song";
         const h = document.createElement("h3");
-        h.textContent = song.id;
+        h.textContent = song.slug || song.parent || song.id;
         const meta = document.createElement("div");
         meta.className = "meta";
         const r = song.region_sec || [];
+        const ds = song.dataset ? `${song.dataset} · ` : "";
         meta.textContent = r.length
-          ? `listen window around ${r[0].toFixed(1)}–${r[1].toFixed(1)} s`
-          : "";
+          ? `${ds}${song.id} · window ${r[0].toFixed(1)}–${r[1].toFixed(1)} s`
+          : `${ds}${song.id}`;
         const grid = document.createElement("div");
         grid.className = "grid";
         for (const [key, label] of CORRECTION_ORDER) {
