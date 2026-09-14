@@ -305,7 +305,17 @@ table.case td {
 table.case th {
   background: #efe6d6;
   font-weight: 650;
-  white-space: nowrap;
+  white-space: normal;
+  min-width: 9.5rem;
+  line-height: 1.25;
+}
+
+table.case .th-sub {
+  display: block;
+  margin-top: 0.2rem;
+  font-weight: 500;
+  font-size: 0.75rem;
+  color: var(--muted);
 }
 
 table.case audio {

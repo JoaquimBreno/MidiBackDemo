@@ -92,7 +92,12 @@ const MIDIBackDemo = (() => {
         const table = document.createElement("table");
         table.className = "case";
         table.innerHTML =
-          "<thead><tr><th>Window</th><th>Shift</th><th>Original</th><th>Modulated</th><th>MIDIBack</th></tr></thead>";
+          "<thead><tr>" +
+          "<th>Window</th><th>Shift</th>" +
+          "<th>Original mix<br><span class=\"th-sub\">vocal + backing</span></th>" +
+          "<th>Original vocal + transposed backing<br><span class=\"th-sub\">held vocal, shifted band</span></th>" +
+          "<th>MIDIBack + transposed backing<br><span class=\"th-sub\">corrected vocal over shifted band</span></th>" +
+          "</tr></thead>";
         const tbody = document.createElement("tbody");
         const rows = [...song.case_study].sort((a, b) =>
           a.n_bars !== b.n_bars ? a.n_bars - b.n_bars : a.shift - b.shift
@@ -108,6 +113,7 @@ const MIDIBackDemo = (() => {
             td.textContent = text;
             tr.appendChild(td);
           }
+          // modulated.wav = original vocal mixed with transposed backing
           for (const key of ["original", "modulated", "midiback"]) {
             const td = document.createElement("td");
             const a = audioEl(row[key]);

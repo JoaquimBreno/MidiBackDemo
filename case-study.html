@@ -34,9 +34,9 @@
     <div class="paper-hero" style="padding-bottom:0.4rem;text-align:left">
       <h1 style="text-align:left;font-size:clamp(1.5rem,3vw,2.1rem)">Held-vocal case study</h1>
       <p class="lead" style="margin:0;max-width:42rem">
-        Vocal pitch held fixed; only the backing is transposed inside a 4-bar or 8-bar
-        window. Clips cropped to the window with ±1&nbsp;s padding. MIDIBack predicts under
-        the modulated accompaniment.
+        For each shift/window: (1) original mix, (2) mix of original vocal with transposed
+        backing, (3) MIDIBack-corrected vocal over the same transposed backing.
+        Clips cropped to the window with ±1&nbsp;s padding.
       </p>
       <p class="note" style="margin-left:0;margin-right:0">
         Primary example: Sonovox parent <code>3726</code>. Shifts: ±0.25, ±0.5, ±1 semitone.
@@ -56,7 +56,7 @@
 
   <footer class="wrap">
     <p>
-      Columns: Original mix · Modulated mix · MIDIBack-corrected vocal over modulated backing.
+      Columns: Original mix · Original vocal + transposed backing · MIDIBack vocal + transposed backing.
       <a href="https://music.ai/" target="_blank" rel="noopener">Music AI</a>
       · <a href="https://github.com/JoaquimBreno" target="_blank" rel="noopener">@JoaquimBreno</a>
     </p>
