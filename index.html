@@ -23,8 +23,8 @@
         <a class="icon-link" href="https://github.com/JoaquimBreno" target="_blank" rel="noopener" title="Joaquim Breno on GitHub" aria-label="Joaquim Breno GitHub">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3.5a3 3 0 1 1 0 6 3 3 0 0 1 0-6zM12 20c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08s5.97 1.09 6 3.08C16.71 18.72 14.5 20 12 20z"/></svg>
         </a>
-        <a class="icon-link" href="https://music.ai/" target="_blank" rel="noopener" title="Music AI" aria-label="Music AI">
-          <img src="assets/music-ai-mark.svg" alt="">
+        <a class="icon-link music-ai-link" href="https://music.ai/" target="_blank" rel="noopener" title="Music AI" aria-label="Music AI">
+          <img src="assets/music-ai-logo.svg" alt="Music AI">
         </a>
       </nav>
     </div>
@@ -59,6 +59,27 @@
         <div><sup>3</sup> MIR Research, <a href="https://music.ai/">Music AI</a> / Moises, João Pessoa, Brazil</div>
       </div>
 
+      <section class="goal" id="goal">
+        <h2>What MIDIBack does</h2>
+        <p>
+          Automatic pitch correction tries to move an out-of-tune singing voice onto the notes
+          the singer meant to hit. Many systems look only at the voice, or at hand-written
+          music rules. They miss the harmony already present in the accompaniment.
+        </p>
+        <p>
+          MIDIBack’s goal is to recover those intended vocal pitches by reading the backing
+          track as symbolic MIDI together with the vocal notes. Voice and band share one
+          OctupleMIDI sequence. Self-attention over accompaniment tokens supplies harmonic
+          context that a vocal-only model never sees. The network outputs corrected MIDI
+          pitches per note. Offline APC (Praat TD-PSOLA via Parselmouth) then resynthesizes
+          the audio for listening.
+        </p>
+        <p>
+          On clean transcriptions MIDIBack reaches 91.6% RPA. Under realistic pitch corruptions
+          it reaches 83.9% RPA, ahead of vocal-only and spectra-conditioned baselines.
+        </p>
+      </section>
+
       <div class="abstract">
         <h2>Abstract</h2>
         <p>
@@ -76,22 +97,15 @@
       <p class="note">
         Listening clips apply pitch edits with <strong>Praat TD-PSOLA</strong> via
         <a href="https://parselmouth.readthedocs.io/">Parselmouth</a>.
-        Five open test clips from <strong>ccmixter</strong> (Creative Commons) and
-        <strong>MIR-1K</strong> (academic). No Sonovox / proprietary material.
+        Test audio comes from <strong>ccmixter</strong> and <strong>MIR-1K</strong>.
       </p>
-
-      <div class="ext-row">
-        <a href="https://music.ai/" target="_blank" rel="noopener">Music AI →</a>
-        <a href="https://github.com/JoaquimBreno" target="_blank" rel="noopener">GitHub @JoaquimBreno →</a>
-        <a href="https://github.com/JoaquimBreno/MidiBackDemo" target="_blank" rel="noopener">This demo repo →</a>
-      </div>
     </div>
 
     <section id="architecture">
       <h2>Architecture</h2>
       <p class="lead">
-        Vocal and backing transcriptions feed one CNPP sequence (Adversarial-MidiBERT);
-        corrected MIDI pitches drive offline APC resynthesis.
+        Vocal and backing transcriptions enter one CNPP sequence (Adversarial-MidiBERT).
+        Corrected MIDI pitches then drive offline APC resynthesis for the listening mixes below.
       </p>
       <figure class="arch">
         <img src="assets/MIDIBack-model.png" alt="MIDIBack model diagram">
@@ -102,25 +116,37 @@
     <section id="listen">
       <h2>Listening examples</h2>
       <p class="lead">
-        Same evaluation corruptions as the paper (GRU detuner / outshift). Open-license
-        test audio only:
+        Two pages share the paper’s evaluation corruptions (GRU detuner and global outshift)
+        on open test clips.
       </p>
-      <ul>
-        <li><a href="correction.html">Correction</a> —
-          Original · Detune · Outshift+Detune · MIDIBack · BERT-APC GRU-only · DDPC</li>
-        <li><a href="case-study.html">Held-vocal case study</a> —
-          Original mix · Original vocal + transposed backing · MIDIBack + transposed backing
-          (±0.25 / ±0.5 / ±1 st · 4-bar / 8-bar · ±1&nbsp;s pad)</li>
+      <ul class="page-guide">
+        <li>
+          <a href="correction.html">Correction</a>
+          <p>
+            Side-by-side mixes for each song. Start from the clean original mix, hear a
+            GRU-only detuned vocal, then the harder detune+outshift vocal that is fed to every
+            model. Compare the three corrections: full MIDIBack, BERT-APC (GRU-only ablation),
+            and DDPC (Uniform).
+          </p>
+        </li>
+        <li>
+          <a href="case-study.html">Held-vocal case study</a>
+          <p>
+            Keeps the singer’s original pitches fixed while the backing is transposed in a
+            short window (±0.25, ±0.5, ±1 st on 4-bar and 8-bar regions, with ±1&nbsp;s pad).
+            Listen to the original mix, the same vocal over the shifted band, and MIDIBack’s
+            correction over that shifted band. This probes whether the model follows harmony
+            instead of memorizing absolute pitch.
+          </p>
+        </li>
       </ul>
     </section>
   </main>
 
   <footer class="wrap">
     <p>
-      Demo for the MIDIBack paper draft.
+      Listening demo for the MIDIBack paper draft.
       <a href="https://github.com/JoaquimBreno/MidiBackDemo">JoaquimBreno/MidiBackDemo</a>
-      · affiliated listening materials with
-      <a href="https://music.ai/">Music AI</a>.
     </p>
   </footer>
 </body>

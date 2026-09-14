@@ -1,169 +1,187 @@
 {
   "library": "Praat TD-PSOLA via Parselmouth (parselmouth)",
   "backing_transpose": "pyrubberband",
-  "sources": "ccmixter (Creative Commons) and MIR-1K (academic); no Sonovox",
+  "sources": "ccmixter and MIR-1K test clips",
   "songs": [
     {
-      "id": "Mr_Yesterday_-_King_Richard_s_Blues_(harp_added)__n115-186",
-      "slug": "ccmixter_mr_yesterday",
-      "parent": "ccmixter_mr_yesterday",
-      "dataset": "ccmixter",
+      "id": "amy_15_02",
+      "slug": "mir1k_amy_15_02",
+      "parent": "mir1k_amy_15_02",
+      "dataset": "mir1k",
       "region_sec": [
-        172.82,
-        180.82
+        1.7704547606408596,
+        9.77045476064086
       ],
       "clips": {
-        "original": "audio/correction/ccmixter_mr_yesterday/original.wav",
-        "detune": "audio/correction/ccmixter_mr_yesterday/detune.wav",
-        "outshift_detune": "audio/correction/ccmixter_mr_yesterday/outshift_detune.wav",
-        "midiback": "audio/correction/ccmixter_mr_yesterday/midiback.wav",
-        "bertapc_gru": "audio/correction/ccmixter_mr_yesterday/bertapc_gru.wav",
-        "ddpc": "audio/correction/ccmixter_mr_yesterday/ddpc.wav"
+        "original": "audio/correction/mir1k_amy_15_02/original.wav",
+        "detune": "audio/correction/mir1k_amy_15_02/detune.wav",
+        "outshift_detune": "audio/correction/mir1k_amy_15_02/outshift_detune.wav",
+        "midiback": "audio/correction/mir1k_amy_15_02/midiback.wav",
+        "bertapc_gru": "audio/correction/mir1k_amy_15_02/bertapc_gru.wav",
+        "ddpc": "audio/correction/mir1k_amy_15_02/ddpc.wav"
+      }
+    },
+    {
+      "id": "geniusturtle_7_07",
+      "slug": "mir1k_geniusturtle_7_07",
+      "parent": "mir1k_geniusturtle_7_07",
+      "dataset": "mir1k",
+      "region_sec": [
+        2.05,
+        10.05
+      ],
+      "clips": {
+        "original": "audio/correction/mir1k_geniusturtle_7_07/original.wav",
+        "detune": "audio/correction/mir1k_geniusturtle_7_07/detune.wav",
+        "outshift_detune": "audio/correction/mir1k_geniusturtle_7_07/outshift_detune.wav",
+        "midiback": "audio/correction/mir1k_geniusturtle_7_07/midiback.wav",
+        "bertapc_gru": "audio/correction/mir1k_geniusturtle_7_07/bertapc_gru.wav",
+        "ddpc": "audio/correction/mir1k_geniusturtle_7_07/ddpc.wav"
       },
       "case_study": [
         {
           "n_bars": 4,
           "shift": -1.0,
           "region_sec": [
-            172.82,
-            176.82
+            2.05,
+            6.050000000000001
           ],
           "pad_sec": 1.0,
-          "original": "audio/case_study/ccmixter_mr_yesterday/4b_shift-1/original.wav",
-          "modulated": "audio/case_study/ccmixter_mr_yesterday/4b_shift-1/modulated.wav",
-          "midiback": "audio/case_study/ccmixter_mr_yesterday/4b_shift-1/midiback.wav"
+          "original": "audio/case_study/mir1k_geniusturtle_7_07/4b_shift-1/original.wav",
+          "modulated": "audio/case_study/mir1k_geniusturtle_7_07/4b_shift-1/modulated.wav",
+          "midiback": "audio/case_study/mir1k_geniusturtle_7_07/4b_shift-1/midiback.wav"
         },
         {
           "n_bars": 4,
           "shift": -0.5,
           "region_sec": [
-            172.82,
-            176.82
+            2.05,
+            6.050000000000001
           ],
           "pad_sec": 1.0,
-          "original": "audio/case_study/ccmixter_mr_yesterday/4b_shift-0p5/original.wav",
-          "modulated": "audio/case_study/ccmixter_mr_yesterday/4b_shift-0p5/modulated.wav",
-          "midiback": "audio/case_study/ccmixter_mr_yesterday/4b_shift-0p5/midiback.wav"
+          "original": "audio/case_study/mir1k_geniusturtle_7_07/4b_shift-0p5/original.wav",
+          "modulated": "audio/case_study/mir1k_geniusturtle_7_07/4b_shift-0p5/modulated.wav",
+          "midiback": "audio/case_study/mir1k_geniusturtle_7_07/4b_shift-0p5/midiback.wav"
         },
         {
           "n_bars": 4,
           "shift": -0.25,
           "region_sec": [
-            172.82,
-            176.82
+            2.05,
+            6.050000000000001
           ],
           "pad_sec": 1.0,
-          "original": "audio/case_study/ccmixter_mr_yesterday/4b_shift-0p25/original.wav",
-          "modulated": "audio/case_study/ccmixter_mr_yesterday/4b_shift-0p25/modulated.wav",
-          "midiback": "audio/case_study/ccmixter_mr_yesterday/4b_shift-0p25/midiback.wav"
+          "original": "audio/case_study/mir1k_geniusturtle_7_07/4b_shift-0p25/original.wav",
+          "modulated": "audio/case_study/mir1k_geniusturtle_7_07/4b_shift-0p25/modulated.wav",
+          "midiback": "audio/case_study/mir1k_geniusturtle_7_07/4b_shift-0p25/midiback.wav"
         },
         {
           "n_bars": 4,
           "shift": 0.25,
           "region_sec": [
-            172.82,
-            176.82
+            2.05,
+            6.050000000000001
           ],
           "pad_sec": 1.0,
-          "original": "audio/case_study/ccmixter_mr_yesterday/4b_shift+0p25/original.wav",
-          "modulated": "audio/case_study/ccmixter_mr_yesterday/4b_shift+0p25/modulated.wav",
-          "midiback": "audio/case_study/ccmixter_mr_yesterday/4b_shift+0p25/midiback.wav"
+          "original": "audio/case_study/mir1k_geniusturtle_7_07/4b_shift+0p25/original.wav",
+          "modulated": "audio/case_study/mir1k_geniusturtle_7_07/4b_shift+0p25/modulated.wav",
+          "midiback": "audio/case_study/mir1k_geniusturtle_7_07/4b_shift+0p25/midiback.wav"
         },
         {
           "n_bars": 4,
           "shift": 0.5,
           "region_sec": [
-            172.82,
-            176.82
+            2.05,
+            6.050000000000001
           ],
           "pad_sec": 1.0,
-          "original": "audio/case_study/ccmixter_mr_yesterday/4b_shift+0p5/original.wav",
-          "modulated": "audio/case_study/ccmixter_mr_yesterday/4b_shift+0p5/modulated.wav",
-          "midiback": "audio/case_study/ccmixter_mr_yesterday/4b_shift+0p5/midiback.wav"
+          "original": "audio/case_study/mir1k_geniusturtle_7_07/4b_shift+0p5/original.wav",
+          "modulated": "audio/case_study/mir1k_geniusturtle_7_07/4b_shift+0p5/modulated.wav",
+          "midiback": "audio/case_study/mir1k_geniusturtle_7_07/4b_shift+0p5/midiback.wav"
         },
         {
           "n_bars": 4,
           "shift": 1.0,
           "region_sec": [
-            172.82,
-            176.82
+            2.05,
+            6.050000000000001
           ],
           "pad_sec": 1.0,
-          "original": "audio/case_study/ccmixter_mr_yesterday/4b_shift+1/original.wav",
-          "modulated": "audio/case_study/ccmixter_mr_yesterday/4b_shift+1/modulated.wav",
-          "midiback": "audio/case_study/ccmixter_mr_yesterday/4b_shift+1/midiback.wav"
+          "original": "audio/case_study/mir1k_geniusturtle_7_07/4b_shift+1/original.wav",
+          "modulated": "audio/case_study/mir1k_geniusturtle_7_07/4b_shift+1/modulated.wav",
+          "midiback": "audio/case_study/mir1k_geniusturtle_7_07/4b_shift+1/midiback.wav"
         },
         {
           "n_bars": 8,
           "shift": -1.0,
           "region_sec": [
-            172.82,
-            180.82
+            2.05,
+            10.05
           ],
           "pad_sec": 1.0,
-          "original": "audio/case_study/ccmixter_mr_yesterday/8b_shift-1/original.wav",
-          "modulated": "audio/case_study/ccmixter_mr_yesterday/8b_shift-1/modulated.wav",
-          "midiback": "audio/case_study/ccmixter_mr_yesterday/8b_shift-1/midiback.wav"
+          "original": "audio/case_study/mir1k_geniusturtle_7_07/8b_shift-1/original.wav",
+          "modulated": "audio/case_study/mir1k_geniusturtle_7_07/8b_shift-1/modulated.wav",
+          "midiback": "audio/case_study/mir1k_geniusturtle_7_07/8b_shift-1/midiback.wav"
         },
         {
           "n_bars": 8,
           "shift": -0.5,
           "region_sec": [
-            172.82,
-            180.82
+            2.05,
+            10.05
           ],
           "pad_sec": 1.0,
-          "original": "audio/case_study/ccmixter_mr_yesterday/8b_shift-0p5/original.wav",
-          "modulated": "audio/case_study/ccmixter_mr_yesterday/8b_shift-0p5/modulated.wav",
-          "midiback": "audio/case_study/ccmixter_mr_yesterday/8b_shift-0p5/midiback.wav"
+          "original": "audio/case_study/mir1k_geniusturtle_7_07/8b_shift-0p5/original.wav",
+          "modulated": "audio/case_study/mir1k_geniusturtle_7_07/8b_shift-0p5/modulated.wav",
+          "midiback": "audio/case_study/mir1k_geniusturtle_7_07/8b_shift-0p5/midiback.wav"
         },
         {
           "n_bars": 8,
           "shift": -0.25,
           "region_sec": [
-            172.82,
-            180.82
+            2.05,
+            10.05
           ],
           "pad_sec": 1.0,
-          "original": "audio/case_study/ccmixter_mr_yesterday/8b_shift-0p25/original.wav",
-          "modulated": "audio/case_study/ccmixter_mr_yesterday/8b_shift-0p25/modulated.wav",
-          "midiback": "audio/case_study/ccmixter_mr_yesterday/8b_shift-0p25/midiback.wav"
+          "original": "audio/case_study/mir1k_geniusturtle_7_07/8b_shift-0p25/original.wav",
+          "modulated": "audio/case_study/mir1k_geniusturtle_7_07/8b_shift-0p25/modulated.wav",
+          "midiback": "audio/case_study/mir1k_geniusturtle_7_07/8b_shift-0p25/midiback.wav"
         },
         {
           "n_bars": 8,
           "shift": 0.25,
           "region_sec": [
-            172.82,
-            180.82
+            2.05,
+            10.05
           ],
           "pad_sec": 1.0,
-          "original": "audio/case_study/ccmixter_mr_yesterday/8b_shift+0p25/original.wav",
-          "modulated": "audio/case_study/ccmixter_mr_yesterday/8b_shift+0p25/modulated.wav",
-          "midiback": "audio/case_study/ccmixter_mr_yesterday/8b_shift+0p25/midiback.wav"
+          "original": "audio/case_study/mir1k_geniusturtle_7_07/8b_shift+0p25/original.wav",
+          "modulated": "audio/case_study/mir1k_geniusturtle_7_07/8b_shift+0p25/modulated.wav",
+          "midiback": "audio/case_study/mir1k_geniusturtle_7_07/8b_shift+0p25/midiback.wav"
         },
         {
           "n_bars": 8,
           "shift": 0.5,
           "region_sec": [
-            172.82,
-            180.82
+            2.05,
+            10.05
           ],
           "pad_sec": 1.0,
-          "original": "audio/case_study/ccmixter_mr_yesterday/8b_shift+0p5/original.wav",
-          "modulated": "audio/case_study/ccmixter_mr_yesterday/8b_shift+0p5/modulated.wav",
-          "midiback": "audio/case_study/ccmixter_mr_yesterday/8b_shift+0p5/midiback.wav"
+          "original": "audio/case_study/mir1k_geniusturtle_7_07/8b_shift+0p5/original.wav",
+          "modulated": "audio/case_study/mir1k_geniusturtle_7_07/8b_shift+0p5/modulated.wav",
+          "midiback": "audio/case_study/mir1k_geniusturtle_7_07/8b_shift+0p5/midiback.wav"
         },
         {
           "n_bars": 8,
           "shift": 1.0,
           "region_sec": [
-            172.82,
-            180.82
+            2.05,
+            10.05
           ],
           "pad_sec": 1.0,
-          "original": "audio/case_study/ccmixter_mr_yesterday/8b_shift+1/original.wav",
-          "modulated": "audio/case_study/ccmixter_mr_yesterday/8b_shift+1/modulated.wav",
-          "midiback": "audio/case_study/ccmixter_mr_yesterday/8b_shift+1/midiback.wav"
+          "original": "audio/case_study/mir1k_geniusturtle_7_07/8b_shift+1/original.wav",
+          "modulated": "audio/case_study/mir1k_geniusturtle_7_07/8b_shift+1/modulated.wav",
+          "midiback": "audio/case_study/mir1k_geniusturtle_7_07/8b_shift+1/midiback.wav"
         }
       ]
     },
@@ -201,42 +219,6 @@
         "midiback": "audio/correction/ccmixter_lucky_boy/midiback.wav",
         "bertapc_gru": "audio/correction/ccmixter_lucky_boy/bertapc_gru.wav",
         "ddpc": "audio/correction/ccmixter_lucky_boy/ddpc.wav"
-      }
-    },
-    {
-      "id": "amy_15_02",
-      "slug": "mir1k_amy_15_02",
-      "parent": "mir1k_amy_15_02",
-      "dataset": "mir1k",
-      "region_sec": [
-        1.7704547606408596,
-        9.77045476064086
-      ],
-      "clips": {
-        "original": "audio/correction/mir1k_amy_15_02/original.wav",
-        "detune": "audio/correction/mir1k_amy_15_02/detune.wav",
-        "outshift_detune": "audio/correction/mir1k_amy_15_02/outshift_detune.wav",
-        "midiback": "audio/correction/mir1k_amy_15_02/midiback.wav",
-        "bertapc_gru": "audio/correction/mir1k_amy_15_02/bertapc_gru.wav",
-        "ddpc": "audio/correction/mir1k_amy_15_02/ddpc.wav"
-      }
-    },
-    {
-      "id": "geniusturtle_7_07",
-      "slug": "mir1k_geniusturtle_7_07",
-      "parent": "mir1k_geniusturtle_7_07",
-      "dataset": "mir1k",
-      "region_sec": [
-        2.054545521736145,
-        10.054545521736145
-      ],
-      "clips": {
-        "original": "audio/correction/mir1k_geniusturtle_7_07/original.wav",
-        "detune": "audio/correction/mir1k_geniusturtle_7_07/detune.wav",
-        "outshift_detune": "audio/correction/mir1k_geniusturtle_7_07/outshift_detune.wav",
-        "midiback": "audio/correction/mir1k_geniusturtle_7_07/midiback.wav",
-        "bertapc_gru": "audio/correction/mir1k_geniusturtle_7_07/bertapc_gru.wav",
-        "ddpc": "audio/correction/mir1k_geniusturtle_7_07/ddpc.wav"
       }
     }
   ],

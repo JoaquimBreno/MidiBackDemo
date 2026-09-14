@@ -1,37 +1,100 @@
 const MIDIBackDemo = (() => {
   const CORRECTION_ORDER = [
-    ["original", "Original"],
-    ["detune", "Detune"],
-    ["outshift_detune", "Outshift + Detune"],
-    ["midiback", "MIDIBack"],
-    ["bertapc_gru", "BERT-APC GRU-only"],
-    ["ddpc", "DDPC"],
+    ["original", "Original MIX", null],
+    ["detune", "Detuned-GRU-only vocal mix", null],
+    [
+      "outshift_detune",
+      "Detuned Outshift vocal mix",
+      "This vocal is the input to the models below.",
+    ],
+    ["midiback", "Corrected audio: full MIDIBack", null],
+    ["bertapc_gru", "Corrected audio: BERT-APC (GRU-only)", null],
+    ["ddpc", "DDPC (Uniform)", null],
   ];
 
+  function siteBase() {
+    const scripts = document.getElementsByTagName("script");
+    for (let i = 0; i < scripts.length; i++) {
+      const src = scripts[i].src || "";
+      if (src.includes("app.js")) {
+        return src.replace(/app\.js(?:\?.*)?$/, "");
+      }
+    }
+    const path = location.pathname || "/";
+    if (path.endsWith(".html")) {
+      return path.slice(0, path.lastIndexOf("/") + 1);
+    }
+    return path.endsWith("/") ? path : `${path}/`;
+  }
+
+  function assetUrl(rel) {
+    if (!rel) return null;
+    if (/^(https?:|data:|blob:)/i.test(rel)) return rel;
+    const encoded = String(rel)
+      .split("/")
+      .map((part) => encodeURIComponent(part))
+      .join("/");
+    return new URL(encoded, siteBase() || location.href).href;
+  }
+
   async function loadCatalog() {
-    const res = await fetch("catalog.json", { cache: "no-store" });
+    const res = await fetch(assetUrl("catalog.json"), { cache: "no-store" });
     if (!res.ok) throw new Error(`catalog.json ${res.status}`);
     return res.json();
   }
 
   function audioEl(src) {
-    if (!src) return null;
+    const href = assetUrl(src);
+    if (!href) return null;
     const a = document.createElement("audio");
     a.controls = true;
-    a.preload = "none";
-    a.src = src;
+    a.preload = "metadata";
+    a.src = href;
+    a.addEventListener("error", () => {
+      a.classList.add("audio-error");
+      a.title = `Failed to load ${src}`;
+    });
     return a;
   }
 
-  function clipRow(label, src) {
+  function clipRow(label, src, note) {
     const row = document.createElement("div");
     row.className = "clip" + (src ? "" : " missing");
+    const left = document.createElement("div");
+    left.className = "clip-label";
     const lab = document.createElement("label");
     lab.textContent = label;
-    row.appendChild(lab);
+    left.appendChild(lab);
+    if (note) {
+      const hint = document.createElement("span");
+      hint.className = "clip-note";
+      hint.textContent = note;
+      left.appendChild(hint);
+    }
+    row.appendChild(left);
     const a = audioEl(src);
     if (a) row.appendChild(a);
     return row;
+  }
+
+  function songTitle(song) {
+    if (song.dataset === "mir1k") return song.id || song.slug;
+    const raw = String(song.id || song.slug || "").split("__")[0];
+    return raw.replace(/_/g, " ");
+  }
+
+  function songMeta(song) {
+    const datasetLabel =
+      song.dataset === "mir1k"
+        ? "MIR-1K"
+        : song.dataset === "ccmixter"
+          ? "CCMixter"
+          : song.dataset || "";
+    const r = song.region_sec || [];
+    if (r.length === 2) {
+      return `${datasetLabel}, window ${Number(r[0]).toFixed(1)} to ${Number(r[1]).toFixed(1)} s`;
+    }
+    return datasetLabel;
   }
 
   async function renderCorrection() {
@@ -39,30 +102,31 @@ const MIDIBackDemo = (() => {
     const root = document.getElementById("songs");
     try {
       const catalog = await loadCatalog();
-      status.textContent = `${catalog.songs.length} songs · ${catalog.sources || catalog.library}`;
+      // Case-study track stays on its own page; correction uses clearer vocal demos.
+      const songs = catalog.songs.filter(
+        (s) => s.clips && Object.keys(s.clips).length
+      );
+      status.textContent = `${songs.length} songs. ${catalog.sources || catalog.library || ""}`;
       root.innerHTML = "";
-      for (const song of catalog.songs) {
+      for (const song of songs) {
         const card = document.createElement("article");
         card.className = "song";
         const h = document.createElement("h3");
-        h.textContent = song.slug || song.parent || song.id;
+        h.textContent = songTitle(song);
         const meta = document.createElement("div");
         meta.className = "meta";
-        const r = song.region_sec || [];
-        const ds = song.dataset ? `${song.dataset} · ` : "";
-        meta.textContent = r.length
-          ? `${ds}${song.id} · window ${r[0].toFixed(1)}–${r[1].toFixed(1)} s`
-          : `${ds}${song.id}`;
+        meta.textContent = songMeta(song);
         const grid = document.createElement("div");
         grid.className = "grid";
-        for (const [key, label] of CORRECTION_ORDER) {
-          grid.appendChild(clipRow(label, song.clips && song.clips[key]));
+        for (const [key, label, note] of CORRECTION_ORDER) {
+          grid.appendChild(clipRow(label, song.clips && song.clips[key], note));
         }
         card.append(h, meta, grid);
         root.appendChild(card);
       }
     } catch (err) {
-      status.textContent = "Catalog not ready yet — audio render still running.";
+      status.textContent =
+        "Could not load catalog.json. Serve the MidiBackDemo folder over HTTP (not file://).";
       console.error(err);
     }
   }
@@ -87,7 +151,10 @@ const MIDIBackDemo = (() => {
       for (const song of songs) {
         const section = document.createElement("section");
         const h = document.createElement("h2");
-        h.textContent = song.id;
+        h.textContent = songTitle(song);
+        const meta = document.createElement("div");
+        meta.className = "meta";
+        meta.textContent = songMeta(song);
         const wrap = document.createElement("div");
         wrap.className = "table-wrap";
         const table = document.createElement("table");
@@ -114,23 +181,23 @@ const MIDIBackDemo = (() => {
             td.textContent = text;
             tr.appendChild(td);
           }
-          // modulated.wav = original vocal mixed with transposed backing
           for (const key of ["original", "modulated", "midiback"]) {
             const td = document.createElement("td");
             const a = audioEl(row[key]);
             if (a) td.appendChild(a);
-            else td.textContent = "—";
+            else td.textContent = "n/a";
             tr.appendChild(td);
           }
           tbody.appendChild(tr);
         }
         table.appendChild(tbody);
         wrap.appendChild(table);
-        section.append(h, wrap);
+        section.append(h, meta, wrap);
         root.appendChild(section);
       }
     } catch (err) {
-      status.textContent = "Catalog not ready yet — audio render still running.";
+      status.textContent =
+        "Could not load catalog.json. Serve the MidiBackDemo folder over HTTP (not file://).";
       console.error(err);
     }
   }

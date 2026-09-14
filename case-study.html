@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Case study — MIDIBack Demo</title>
+  <title>Case study · MIDIBack Demo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600;650&display=swap" rel="stylesheet">
@@ -23,8 +23,8 @@
         <a class="icon-link" href="https://github.com/JoaquimBreno" target="_blank" rel="noopener" title="Joaquim Breno on GitHub" aria-label="Joaquim Breno GitHub">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3.5a3 3 0 1 1 0 6 3 3 0 0 1 0-6zM12 20c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08s5.97 1.09 6 3.08C16.71 18.72 14.5 20 12 20z"/></svg>
         </a>
-        <a class="icon-link" href="https://music.ai/" target="_blank" rel="noopener" title="Music AI" aria-label="Music AI">
-          <img src="assets/music-ai-mark.svg" alt="">
+        <a class="icon-link music-ai-link" href="https://music.ai/" target="_blank" rel="noopener" title="Music AI" aria-label="Music AI">
+          <img src="assets/music-ai-logo.svg" alt="Music AI">
         </a>
       </nav>
     </div>
@@ -34,13 +34,16 @@
     <div class="paper-hero" style="padding-bottom:0.4rem;text-align:left">
       <h1 style="text-align:left;font-size:clamp(1.5rem,3vw,2.1rem)">Held-vocal case study</h1>
       <p class="lead" style="margin:0;max-width:42rem">
-        For each shift/window: (1) original mix, (2) mix of original vocal with transposed
-        backing, (3) MIDIBack-corrected vocal over the same transposed backing.
-        Clips cropped to the window with ±1&nbsp;s padding.
+        Here the vocal stays fixed and only the accompaniment moves. If MIDIBack truly uses
+        backing harmony, its corrected pitches should track the transposed band instead of
+        clinging to the absolute pitch of the original mix.
       </p>
-      <p class="note" style="margin-left:0;margin-right:0">
-        Case study on CCMixter track <code>ccmixter_mr_yesterday</code>
-        (Creative Commons). Shifts: ±0.25, ±0.5, ±1 semitone.
+      <p class="lead" style="margin:0.65rem 0 0;max-width:42rem">
+        Each row is one shift and window length on MIR-1K <code>geniusturtle_7_07</code>
+        Column one is the original mix. Column two keeps the original vocal and mixes it with
+        a backing transposed only inside that window. Column three replaces the vocal with
+        MIDIBack’s correction over the same transposed backing. Clips use a ±1&nbsp;s pad around
+        the window. Shifts are ±0.25, ±0.5, and ±1 semitone on 4-bar and 8-bar regions.
       </p>
       <p class="status" id="status">Loading catalog…</p>
     </div>
@@ -50,9 +53,7 @@
 
   <footer class="wrap">
     <p>
-      Columns: Original mix · Original vocal + transposed backing · MIDIBack vocal + transposed backing.
-      <a href="https://music.ai/" target="_blank" rel="noopener">Music AI</a>
-      · <a href="https://github.com/JoaquimBreno" target="_blank" rel="noopener">@JoaquimBreno</a>
+      <a href="https://github.com/JoaquimBreno/MidiBackDemo">JoaquimBreno/MidiBackDemo</a>
     </p>
   </footer>
   <script src="app.js"></script>

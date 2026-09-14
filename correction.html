@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Correction — MIDIBack Demo</title>
+  <title>Correction · MIDIBack Demo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600;650&display=swap" rel="stylesheet">
@@ -23,8 +23,8 @@
         <a class="icon-link" href="https://github.com/JoaquimBreno" target="_blank" rel="noopener" title="Joaquim Breno on GitHub" aria-label="Joaquim Breno GitHub">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3.5a3 3 0 1 1 0 6 3 3 0 0 1 0-6zM12 20c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08s5.97 1.09 6 3.08C16.71 18.72 14.5 20 12 20z"/></svg>
         </a>
-        <a class="icon-link" href="https://music.ai/" target="_blank" rel="noopener" title="Music AI" aria-label="Music AI">
-          <img src="assets/music-ai-mark.svg" alt="">
+        <a class="icon-link music-ai-link" href="https://music.ai/" target="_blank" rel="noopener" title="Music AI" aria-label="Music AI">
+          <img src="assets/music-ai-logo.svg" alt="Music AI">
         </a>
       </nav>
     </div>
@@ -33,20 +33,26 @@
   <main class="wrap">
     <div class="paper-hero" style="padding-bottom:0.4rem;text-align:left">
       <h1 style="text-align:left;font-size:clamp(1.5rem,3vw,2.1rem)">Correction examples</h1>
-      <p class="lead" style="margin:0;max-width:40rem">
-        Same outshift+detune corruption for all correctors. Vocals resynthesized with
-        Praat TD-PSOLA (Parselmouth); mixes keep the original backing.
+      <p class="lead" style="margin:0;max-width:42rem">
+        This page asks a simple question: given a corrupted vocal over the original backing,
+        which system recovers pitches that sound in tune with the band?
+      </p>
+      <p class="lead" style="margin:0.65rem 0 0;max-width:42rem">
+        For every song you hear six mixes. The clean original mix comes first. Next is a
+        GRU-detuned vocal only. Then comes detune plus global outshift. That third vocal is
+        the shared input to MIDIBack, BERT-APC (GRU-only), and DDPC (Uniform). The last three
+        clips are their corrected outputs mixed with the same original backing. Pitch edits
+        use Praat TD-PSOLA via Parselmouth.
       </p>
       <p class="status" id="status" style="margin-top:0.75rem">Loading catalog…</p>
     </div>
+
     <div id="songs"></div>
   </main>
 
   <footer class="wrap">
     <p>
-      Clip order: Original → Detune → Outshift+Detune → MIDIBack → BERT-APC GRU-only → DDPC.
-      <a href="https://music.ai/" target="_blank" rel="noopener">Music AI</a>
-      · <a href="https://github.com/JoaquimBreno" target="_blank" rel="noopener">@JoaquimBreno</a>
+      <a href="https://github.com/JoaquimBreno/MidiBackDemo">JoaquimBreno/MidiBackDemo</a>
     </p>
   </footer>
   <script src="app.js"></script>
