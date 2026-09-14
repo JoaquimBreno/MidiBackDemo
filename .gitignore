@@ -1,0 +1,5 @@
+# Audio renders (wav) and local logs — keep site small in git history if needed.
+render.log
+*.pyc
+__pycache__/
+.DS_Store

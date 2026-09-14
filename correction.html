@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Correction — MIDIBack Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;650&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site">
+    <div class="wrap nav">
+      <a class="brand" href="index.html">MIDIBack<span>harmony-aware pitch correction</span></a>
+      <nav>
+        <a href="index.html">Architecture</a>
+        <a href="correction.html" aria-current="page">Correction</a>
+        <a href="case-study.html">Case study</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="hero">
+      <h1>Correction examples</h1>
+      <p>
+        Same outshift+detune corruption for all correctors. Vocals are
+        resynthesized with Praat TD-PSOLA (Parselmouth); mixes keep the
+        original backing.
+      </p>
+      <p class="status" id="status">Loading catalog…</p>
+    </div>
+    <div id="songs"></div>
+  </main>
+
+  <footer class="wrap">
+    <p>Clip order: Original → Detune → Outshift+Detune → MIDIBack → BERT-APC GRU-only → DDPC.</p>
+  </footer>
+  <script src="app.js"></script>
+  <script>MIDIBackDemo.renderCorrection();</script>
+</body>
+</html>

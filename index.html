@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MIDIBack — Listening Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;650&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site">
+    <div class="wrap nav">
+      <a class="brand" href="index.html">MIDIBack<span>harmony-aware pitch correction</span></a>
+      <nav>
+        <a href="index.html" aria-current="page">Architecture</a>
+        <a href="correction.html">Correction</a>
+        <a href="case-study.html">Case study</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="hero">
+      <h1>MIDIBack</h1>
+      <p>
+        Automatic pitch correction conditioned on symbolic accompaniment.
+        Vocal and backing notes share one OctupleMIDI sequence; an
+        Adversarial-MidiBERT encoder predicts corrected pitch tokens.
+      </p>
+      <p class="note">
+        Listening clips use <strong>Praat TD-PSOLA</strong> via
+        <a href="https://parselmouth.readthedocs.io/">Parselmouth</a>
+        to apply predicted / corrupted pitch shifts to the vocal waveform.
+        Backing window transposition for the case study uses pyrubberband.
+      </p>
+    </div>
+
+    <section id="architecture">
+      <h2>Architecture</h2>
+      <p class="lead">
+        Cascaded pipeline: GAME / NS-SPP vocal transcription and MuScriptor
+        backing transcription feed a single CNPP sequence; corrected MIDI
+        pitches drive APC resynthesis offline.
+      </p>
+      <figure class="arch">
+        <img src="assets/MIDIBack-model.png" alt="MIDIBack model diagram: vocal and backing transcription into OctupleMIDI, Adversarial-MidiBERT CNPP, corrected pitches">
+      </figure>
+      <p class="caption">
+        Figure from the accompanying paper draft
+        <em>MIDIBack: Harmony-Aware Automatic Pitch Correction Conditioned on Symbolic Accompaniment</em>.
+      </p>
+    </section>
+
+    <section>
+      <h2>Listening pages</h2>
+      <p class="lead">
+        Up to five Sonovox <em>test</em> chunks. Corruption uses the same
+        GRU detuner / outshift protocol as the paper evaluation.
+      </p>
+      <ul>
+        <li><a href="correction.html">Correction comparisons</a> —
+          Original · Detune · Outshift+Detune · MIDIBack · BERT-APC GRU-only · DDPC</li>
+        <li><a href="case-study.html">Held-vocal case study</a> —
+          Original · Modulated backing · MIDIBack-corrected (±0.25 / ±0.5 / ±1 st, 4-bar and 8-bar windows, ±1&nbsp;s pad)</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <p>
+      Demo site for the MIDIBack paper materials.
+      Source: <a href="https://github.com/JoaquimBreno/MidiBackDemo">JoaquimBreno/MidiBackDemo</a>.
+    </p>
+  </footer>
+</body>
+</html>

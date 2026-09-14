@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Case study — MIDIBack Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;650&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site">
+    <div class="wrap nav">
+      <a class="brand" href="index.html">MIDIBack<span>harmony-aware pitch correction</span></a>
+      <nav>
+        <a href="index.html">Architecture</a>
+        <a href="correction.html">Correction</a>
+        <a href="case-study.html" aria-current="page">Case study</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="hero">
+      <h1>Held-vocal case study</h1>
+      <p>
+        Vocal pitch held fixed; only the backing is transposed inside a
+        4-bar or 8-bar window. Clips are cropped to the window with
+        ±1&nbsp;s padding. MIDIBack predicts under the modulated accompaniment.
+      </p>
+      <p class="note">
+        Primary example: Sonovox parent <code>3726</code> (paper cherry).
+        Shifts: ±0.25, ±0.5, ±1 semitone.
+      </p>
+      <p class="status" id="status">Loading catalog…</p>
+    </div>
+
+    <section>
+      <figure class="arch">
+        <img src="assets/cherry_pick_3726_column.png" alt="Pitch trajectories for song 3726 under modulated backing">
+      </figure>
+      <p class="caption">Pitch view for the 3726 modulation cherry (paper figure).</p>
+    </section>
+
+    <div id="case"></div>
+  </main>
+
+  <footer class="wrap">
+    <p>Columns: Original mix · Modulated mix · MIDIBack-corrected vocal over modulated backing.</p>
+  </footer>
+  <script src="app.js"></script>
+  <script>MIDIBackDemo.renderCaseStudy();</script>
+</body>
+</html>
