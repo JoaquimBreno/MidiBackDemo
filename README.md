@@ -3,7 +3,7 @@
 Companion listening page for the MIDIBack paper draft:
 harmony-aware automatic pitch correction conditioned on symbolic accompaniment.
 
-**Live site:** https://joaquimbreno.github.io/MidiBackDemo/
+**Live site:** https://midiback.joaquimbreno.com/
 
 ## Pages
 
